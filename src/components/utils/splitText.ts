@@ -1,18 +1,20 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollSmoother } from "gsap-trial/ScrollSmoother";
-import { SplitText } from "gsap-trial/SplitText";
+import { SplitText } from "gsap/SplitText";
 
 interface ParaElement extends HTMLElement {
   anim?: gsap.core.Animation;
   split?: SplitText;
 }
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 export default function setSplitText() {
   ScrollTrigger.config({ ignoreMobileResize: true });
+
+  if (typeof window === "undefined") return;
   if (window.innerWidth < 900) return;
+
   const paras: NodeListOf<ParaElement> = document.querySelectorAll(".para");
   const titles: NodeListOf<ParaElement> = document.querySelectorAll(".title");
 
@@ -21,23 +23,26 @@ export default function setSplitText() {
 
   paras.forEach((para: ParaElement) => {
     para.classList.add("visible");
+
     if (para.anim) {
       para.anim.progress(1).kill();
       para.split?.revert();
     }
 
-    para.split = new SplitText(para, {
+    const split = new SplitText(para, {
       type: "lines,words",
       linesClass: "split-line",
     });
 
+    para.split = split;
+
     para.anim = gsap.fromTo(
-      para.split.words,
+      split.words,
       { autoAlpha: 0, y: 80 },
       {
         autoAlpha: 1,
         scrollTrigger: {
-          trigger: para.parentElement?.parentElement,
+          trigger: para.parentElement?.parentElement ?? para,
           toggleActions: ToggleAction,
           start: TriggerStart,
         },
@@ -48,22 +53,27 @@ export default function setSplitText() {
       }
     );
   });
+
   titles.forEach((title: ParaElement) => {
     if (title.anim) {
       title.anim.progress(1).kill();
       title.split?.revert();
     }
-    title.split = new SplitText(title, {
+
+    const split = new SplitText(title, {
       type: "chars,lines",
       linesClass: "split-line",
     });
+
+    title.split = split;
+
     title.anim = gsap.fromTo(
-      title.split.chars,
+      split.chars,
       { autoAlpha: 0, y: 80, rotate: 10 },
       {
         autoAlpha: 1,
         scrollTrigger: {
-          trigger: title.parentElement?.parentElement,
+          trigger: title.parentElement?.parentElement ?? title,
           toggleActions: ToggleAction,
           start: TriggerStart,
         },
@@ -76,5 +86,7 @@ export default function setSplitText() {
     );
   });
 
-  ScrollTrigger.addEventListener("refresh", () => setSplitText());
+  ScrollTrigger.addEventListener("refreshInit", () => {
+    ScrollTrigger.refresh();
+  });
 }
