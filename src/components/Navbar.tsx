@@ -49,7 +49,7 @@ const Navbar = () => {
           href="mailto:iammusa182@gmail.com"
           className="navbar-connect"
           data-cursor="disable"
-        >
+        >   
           iammusa182@gmail.com
         </a>
         <ul>
