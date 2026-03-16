@@ -1,39 +1,49 @@
+"use client";
+
 import { useState, useCallback } from "react";
 import "./styles/Work.css";
 import WorkImage from "./WorkImage";
+import img1 from "../../src/assets/easyrecallhero.png";
+import img2 from "../../src/assets/darhero.png";
+import img3 from "../../src/assets/yunutyhero.png";
+import img4 from "../../src/assets/hospitalhero.png";
+import img5 from "../../src/assets/sayahero.png";
+
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
 
 const projects = [
   {
-    title: "Solid Starters",
-    category: "Low-Code Platform",
-    tools: "Angular, Next.js, NestJS, MongoDB",
-    image: "/images/Solidx.png",
+    title: "Easy Recall",
+    category: "E-Learning Platform",
+    tools: " Next.js,css",
+    image: img1,
   },
   {
-    title: "Radix",
-    category: "E-Commerce",
-    tools: "Angular, Next.js, NestJS, CMS",
-    image: "/images/radix.png",
+    title: "Dar",
+    category: "Furniture of your choice ",
+    tools: " React.js",
+    image: img2,
   },
   {
-    title: "Bond Cancellation",
-    category: "Import-Export Automation",
-    tools: "Angular, Next.js, NestJS, Workflows",
-    image: "/images/bond.png",
+    title: "Yunuty",
+    category: "construction site ",
+    tools: " Next.js,",
+    image: img3,
   },
   {
-    title: "Sapphire",
-    category: "CRM Platform",
-    tools: "AngularJS, NestJS, PostgreSQL",
-    image: "/images/sapphire.png",
+    title: "HMS",
+    category: "Hospital Management System",
+    tools: "react",
+    image: img4,
   },
-  {
-    title: "Mpro",
-    category: "Insurance Platform",
-    tools: "React.js, Node.js, Microservices",
-    image: "/images/Maxlife.png",
+   {
+    title: "Saya Welfare",
+    category: " NGO website",
+    tools: "next.js",
+    image: img5,
   },
+
+
 ];
 
 const Work = () => {
