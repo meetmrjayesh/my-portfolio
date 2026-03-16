@@ -43,7 +43,7 @@ const Navbar = () => {
     <>
       <div className="header">
         <a href="/#" className="navbar-title" data-cursor="disable">
-          RC
+          MMF
         </a>
         <a
           href="mailto:iammusa182@gmail.com"

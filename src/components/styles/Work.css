@@ -107,8 +107,10 @@
   font-size: 15px;
 }
 
+/* ── FIXED: Image wrapper no longer uses flex:1 to avoid pushing away from content ── */
 .carousel-image-wrapper {
-  flex: 1;
+  flex: 0 0 auto;
+  width: 45%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -180,7 +182,7 @@
   box-shadow: 0 0 8px rgba(94, 234, 212, 0.4);
 }
 
-/* ── Work Image (reused) ── */
+/* ── Work Image ── */
 .work-image {
   display: flex;
   width: 100%;
@@ -189,6 +191,7 @@
 
 .work-image-in {
   position: relative;
+  width: 100%;
 }
 
 .work-link {
@@ -227,10 +230,15 @@
   object-fit: cover;
 }
 
+/* ── FIXED: Image fills wrapper, stays proportional and close to text ── */
 .work-image img {
-  max-width: 100%;
-  max-height: 400px;
+  width: 100%;
+  max-width: 500px;
+  max-height: 380px;
+  height: auto;
+  object-fit: cover;
   border-radius: 8px;
+  display: block;
 }
 
 /* ── Responsive ── */
@@ -261,6 +269,10 @@
     gap: 40px;
   }
 
+  .carousel-image-wrapper {
+    width: 48%;
+  }
+
   .carousel-arrow-left {
     left: 10px;
   }
@@ -280,8 +292,14 @@
     width: 100%;
   }
 
+  /* FIXED: Full width on tablet/mobile when stacked */
   .carousel-image-wrapper {
     width: 100%;
+  }
+
+  .work-image img {
+    max-width: 100%;
+    max-height: 320px;
   }
 
   .carousel-arrow {

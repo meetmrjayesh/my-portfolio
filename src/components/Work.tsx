@@ -7,6 +7,8 @@ import img1 from "../../src/assets/easyrecallhero.png";
 import img2 from "../../src/assets/darhero.png";
 import img3 from "../../src/assets/yunutyhero.png";
 import img4 from "../../src/assets/hospitalhero.png";
+import img5 from "../../src/assets/sayahero.png";
+
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
 
 const projects = [
@@ -34,7 +36,14 @@ const projects = [
     tools: "react",
     image: img4,
   },
- 
+   {
+    title: "Saya Welfare",
+    category: " NGO website",
+    tools: "next.js",
+    image: img5,
+  },
+
+
 ];
 
 const Work = () => {
