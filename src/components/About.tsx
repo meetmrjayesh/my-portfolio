@@ -12,8 +12,7 @@ const About = () => {
              and continuously improving my skills through real-world projects.
         </p>
       </div>
-    </div>
+    </div> 
   );
 };
-
 export default About;
